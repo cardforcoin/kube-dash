@@ -29,13 +29,13 @@ spec:
               key: rpcpass
         volumeMounts:
           - mountPath: /data
-            name: dash-data
+            name: dashd-data
         resources:
           requests:
             memory: "2Gi"
       restartPolicy: Always
       volumes:
-        - name: dash-data
+        - name: dashd-data
           gcePersistentDisk:
-            pdName: dash-data
+            pdName: dashd-data
             fsType: ext4

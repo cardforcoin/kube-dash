@@ -5,12 +5,12 @@ metadata:
 spec:
   containers:
   - env:
-    - name: DASH_RPC_USER
+    - name: RPCUSER
       valueFrom:
         secretKeyRef:
           name: dash-secret
           key: rpcuser
-    - name: DASH_RPC_PASSWORD
+    - name: RPCPASSWORD
       valueFrom:
         secretKeyRef:
           name: dash-secret
@@ -20,10 +20,10 @@ spec:
     name: dash-debug
     volumeMounts:
       - mountPath: /data
-        name: dash-data
+        name: dashd-data
   restartPolicy: Always
   volumes:
-    - name: dash-data
+    - name: dashd-data
       gcePersistentDisk:
-        pdName: dash-data
+        pdName: dashd-data
         fsType: ext4

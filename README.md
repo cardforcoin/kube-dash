@@ -8,7 +8,7 @@ Runs a dash full node in a kubernetes cluster.
 First provision a disk:
 
 ```console
-gcloud compute disks create --size=20GB dash-data
+gcloud compute disks create --size=20GB dashd-data
 ```
 
 Next create a secret file from the template:

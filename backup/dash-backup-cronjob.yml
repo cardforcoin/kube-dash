@@ -12,5 +12,5 @@ spec:
           - name: cloud-sdk
             image: google/cloud-sdk
             command: ["gcloud"]
-            args: ["compute", "disks", "snapshot", "dash-data", "--zone", "us-central1-c"]
+            args: ["compute", "disks", "snapshot", "dashd-data", "--zone", "us-central1-c"]
           restartPolicy: OnFailure
