@@ -15,12 +15,14 @@ spec:
       - name: dash
         image: dashpay/dashd:latest
         env:
-        - name: DASH_RPC_USER
+        - name: TESTNET
+          value: "1"
+        - name: RPCUSER
           valueFrom:
             secretKeyRef:
               name: dash-secret
               key: rpcuser
-        - name: DASH_RPC_PASSWORD
+        - name: RPCPASSWORD
           valueFrom:
             secretKeyRef:
               name: dash-secret

@@ -5,8 +5,13 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8333
-      targetPort: 8333
+    - port: 19999
+      targetPort: 19999
       protocol: TCP
+      name: node
+    - port: 19998
+      targetPort: 19998
+      protocol: TCP
+      name: rpc
   selector:
     app: dash

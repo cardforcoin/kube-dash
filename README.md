@@ -8,7 +8,7 @@ Runs a dash full node in a kubernetes cluster.
 First provision a disk:
 
 ```console
-gcloud compute disks create --size=750GB dash-data
+gcloud compute disks create --size=20GB dash-data
 ```
 
 Next create a secret file from the template:
@@ -53,4 +53,17 @@ Make sure to tear down the pod when you're done:
 
 ```console
 kubectl delete -f debug/
+```
+
+### Other useful commands
+
+Cluster creation (Create cluster on web):
+
+```console
+gcloud container clusters create dash-cluster  --zone=us-central1-c
+```
+
+Get pods (Workloads on web):
+```console
+kubectl get pods
 ```
