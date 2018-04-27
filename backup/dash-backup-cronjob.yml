@@ -1,7 +1,7 @@
 apiVersion: batch/v2alpha1
 kind: CronJob
 metadata:
-  name: bitcoin-backup-cronjob
+  name: dash-backup-cronjob
 spec:
   schedule: "@daily"
   jobTemplate:
@@ -12,5 +12,5 @@ spec:
           - name: cloud-sdk
             image: google/cloud-sdk
             command: ["gcloud"]
-            args: ["compute", "disks", "snapshot", "bitcoin-data", "--zone", "us-central1-c"]
+            args: ["compute", "disks", "snapshot", "dash-data", "--zone", "us-central1-c"]
           restartPolicy: OnFailure

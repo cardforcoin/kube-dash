@@ -1,29 +1,29 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: bitcoin-debug
+  name: dash-debug
 spec:
   containers:
   - env:
-    - name: BITCOIN_RPC_USER
+    - name: DASH_RPC_USER
       valueFrom:
         secretKeyRef:
-          name: bitcoin-secret
+          name: dash-secret
           key: rpcuser
-    - name: BITCOIN_RPC_PASSWORD
+    - name: DASH_RPC_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: bitcoin-secret
+          name: dash-secret
           key: rpcpass
     image: ubuntu
     args: ["sleep", "1000000"]
-    name: bitcoin-debug
+    name: dash-debug
     volumeMounts:
       - mountPath: /data
-        name: bitcoin-data
+        name: dash-data
   restartPolicy: Always
   volumes:
-    - name: bitcoin-data
+    - name: dash-data
       gcePersistentDisk:
-        pdName: bitcoin-data
+        pdName: dash-data
         fsType: ext4

@@ -1,6 +1,6 @@
-# kube-bitcoin
+# kube-dash
 
-Runs a bitcoin full node in a kubernetes cluster.
+Runs a dash full node in a kubernetes cluster.
 
 
 ## Prerequisites
@@ -8,13 +8,13 @@ Runs a bitcoin full node in a kubernetes cluster.
 First provision a disk:
 
 ```console
-gcloud compute disks create --size=750GB bitcoin-data
+gcloud compute disks create --size=750GB dash-data
 ```
 
 Next create a secret file from the template:
 
 ```console
-cp deploy/bitcoin-secret.yml.template deploy/bitcoin-secret.yml
+cp deploy/dash-secret.yml.template deploy/dash-secret.yml
 ```
 
 Then find the base64 encoding of the username and password you want to use:
@@ -24,7 +24,7 @@ echo -n YOURUSERNAME | base64
 echo -n YOURPASSWORD | base64
 ```
 
-Fill in those values in the `bitcoin-secret.yml` file.
+Fill in those values in the `dash-secret.yml` file.
 
 Finally create the kubernetes resources:
 
@@ -35,7 +35,7 @@ kubectl create -f deploy/
 
 ### Debugging
 
-If your bitcoin node is crashing but you need to ssh in and look at the disk
+If your dash node is crashing but you need to ssh in and look at the disk
 contents, deploy the debug pod (a recent version of Ubuntu, for convenience):
 
 ```console
@@ -45,7 +45,7 @@ kubectl create -f debug/
 Now you can ssh into the debug pod:
 
 ```console
-kubectl exec -it bitcoin-debug -- /bin/bash
+kubectl exec -it dash-debug -- /bin/bash
 ls -lhtra /data
 ```
 

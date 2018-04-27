@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: bitcoin
+  name: dash
 spec:
   strategy:
     type: Recreate
@@ -9,31 +9,31 @@ spec:
   template:
     metadata:
       labels:
-        app: bitcoin
+        app: dash
     spec:
       containers:
-      - name: bitcoin
-        image: amacneil/bitcoin:0.14.2-uasfsegwit1.0
+      - name: dash
+        image: dashpay/dashd:latest
         env:
-        - name: BITCOIN_RPC_USER
+        - name: DASH_RPC_USER
           valueFrom:
             secretKeyRef:
-              name: bitcoin-secret
+              name: dash-secret
               key: rpcuser
-        - name: BITCOIN_RPC_PASSWORD
+        - name: DASH_RPC_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: bitcoin-secret
+              name: dash-secret
               key: rpcpass
         volumeMounts:
           - mountPath: /data
-            name: bitcoin-data
+            name: dash-data
         resources:
           requests:
             memory: "2Gi"
       restartPolicy: Always
       volumes:
-        - name: bitcoin-data
+        - name: dash-data
           gcePersistentDisk:
-            pdName: bitcoin-data
+            pdName: dash-data
             fsType: ext4
