@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: dash
-        image: dashpay/dashd:latest
+        image: petarbukvic/dashd:latest
         env:
         - name: TESTNET
           value: "1"
