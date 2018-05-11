@@ -11,6 +11,8 @@ spec:
       labels:
         app: dash
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: dash
         image: petarbukvic/dashd:latest
@@ -28,7 +30,7 @@ spec:
               name: dash-secret
               key: rpcpass
         volumeMounts:
-          - mountPath: /data
+          - mountPath: /dash
             name: dashd-data
         resources:
           requests:
